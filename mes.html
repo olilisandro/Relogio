@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+   body{
+    background-color: blue;
+   }
+
+   div{
+    width: 800px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 400px;
+   }
+img{
+    width: 800px;
+    height: 400px;  
+}
+img#i2{
+    width: 800px;
+    height: 400px; 
+    margin-left: -25%; 
+}
+img#i2{
+    width: 800px;
+    height: 400px; 
+    margin-left: -0%; 
+}
+
+
+  </style>
+
+
+
+</head>
+<body onload="">
+   
+         <div class="rodape" >
+            <img src="3.webp" alt="" id="i1">
+            <img src="494576526_664852966326194_4362546361008499836_n.jpg" alt="" id="i2">
+            
+         </div>
+
+<script>
+    var itens =1
+  function finalmente(){
+
+    const img = document.getElementById("i1");
+
+if (itens === 1) {
+  img.src = "5.jpg";
+} else if (itens === 2) {
+  img.src = "494576526_664852966326194_4362546361008499836_n.jpg";
+} else if (itens === 3) {
+  img.src = "c0n1.webp";
+}else if (itens === 4) {
+  img.src = "c0n2.jpeg";
+}
+  itens++
+
+
+
+
+
+
+
+
+  if (itens > 5) {
+    itens = 1;
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+setInterval(finalmente, 1000);
+</script>
+
+
+</body>
+</html>
