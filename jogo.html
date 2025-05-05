@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo Simples</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    #game {
+      width: 100%;
+      height: 300px;
+      background-color: #222;
+      position: relative;
+    }
+
+    #player {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+    }
+
+    #obstacle {
+      width: 50px;
+      height: 50px;
+      background-color: green;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      animation: move 2s linear infinite;
+    }
+
+    @keyframes move {
+      0% { right: -50px; }
+      100% { right: 100%; }
+    }
+
+    .jump {
+      animation: jump 0.5s ease;
+    }
+
+    @keyframes jump {
+      0%   { bottom: 0; }
+      50%  { bottom: 100px; }
+      100% { bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+  </div>
+
+  <script>
+    const player = document.getElementById("player");
+    const obstacle = document.getElementById("obstacle");
+
+    // Faz o player pular
+    function jump() {
+      if (!player.classList.contains("jump")) {
+        player.classList.add("jump");
+        setTimeout(() => {
+          player.classList.remove("jump");
+        }, 500);
+      }
+    }
+
+    // Tecla de espaço faz pular
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        jump();
+      }
+    });
+
+    // Detecta colisão
+    setInterval(() => {
+      const playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue("bottom"));
+      const obstacleRight = parseInt(window.getComputedStyle(obstacle).getPropertyValue("right"));
+
+      if (obstacleRight > (window.innerWidth - 100) && obstacleRight < (window.innerWidth - 50) && playerBottom < 50) {
+        alert("💥 Você perdeu!");
+        window.location.reload();
+      }
+    }, 10);
+  </script>
+
+</body>
+</html>
